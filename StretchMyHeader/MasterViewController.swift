@@ -9,11 +9,13 @@
 import UIKit
 
 class MasterViewController: UITableViewController {
-
+    
     var detailViewController: DetailViewController? = nil
     var objects = [AnyObject]()
-
-
+    @IBOutlet weak var dateLabel: UILabel!
+    
+    let dayTimePeriodFormatter = NSDateFormatter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -25,6 +27,27 @@ class MasterViewController: UITableViewController {
             let controllers = split.viewControllers
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
+        
+        dayTimePeriodFormatter.dateFormat = "MMMM d"
+        let date = NSDate()
+        let dateString = dayTimePeriodFormatter.stringFromDate(date)
+        
+        UIApplication.sharedApplication().statusBarHidden = true
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 50
+        
+        let climate:NewsItem = NewsItem.init(category: "World", headline: "Climate change protests, divestments meet fossil fuels realities")
+        let scotland:NewsItem = NewsItem.init(category: "Europe", headline: "Scotland's 'Yes' leader says independence vote is 'once in a lifetime'")
+        let airstrike:NewsItem = NewsItem.init(category: "Middle East", headline: "Airstrikes boost Islamic State, FBI director warns more hostages possible")
+        let nigeria:NewsItem = NewsItem.init(category: "Africa", headline: "Nigeria says 70 dead in building collapse; questions S. Africa victim claim")
+        let despite:NewsItem = NewsItem.init(category: "Asia Pacific", headline: "Despite UN ruling, Japan seeks backing for whale hunting")
+        let official:NewsItem = NewsItem.init(category: "Americas", headline: "Officials: FBI is tracking 100 Americans who fought alongside IS in Syria")
+        let south:NewsItem = NewsItem.init(category: "World", headline: "South Africa in $40 billion deal for Russian nuclear reactors")
+        let one:NewsItem = NewsItem.init(category: "Europe", headline: "'One million babies' created by EU student exchanges")
+        objects = [climate, scotland, airstrike, nigeria, despite, official, south, one]
+        
+        dateLabel.text = dateString
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -48,7 +71,7 @@ class MasterViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                let object = objects[indexPath.row] as! NSDate
+                let object = objects[indexPath.row] as! NewsItem
                 let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
                 controller.detailItem = object
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
@@ -68,10 +91,10 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! HeadlineCell
 
-        let object = objects[indexPath.row] as! NSDate
-        cell.textLabel!.text = object.description
+        let object = objects[indexPath.row] as! NewsItem
+        cell.setCellContents(object)
         return cell
     }
 
@@ -88,7 +111,5 @@ class MasterViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
-
-
 }
 
