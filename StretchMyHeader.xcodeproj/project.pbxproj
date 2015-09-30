@@ -64,8 +64,8 @@
 				AAFA67FD1BBB0C20009BD1BD /* MasterViewController.swift */,
 				AAFA67FF1BBB0C20009BD1BD /* DetailViewController.swift */,
 				AAFA680F1BBB0E67009BD1BD /* HeadlineCell.swift */,
-				AAFA68011BBB0C20009BD1BD /* Main.storyboard */,
 				AAFA68111BBB18FF009BD1BD /* NewsItem.swift */,
+				AAFA68011BBB0C20009BD1BD /* Main.storyboard */,
 				AAFA68041BBB0C20009BD1BD /* Assets.xcassets */,
 				AAFA68061BBB0C20009BD1BD /* LaunchScreen.storyboard */,
 				AAFA68091BBB0C20009BD1BD /* Info.plist */,
@@ -295,6 +295,7 @@
 				AAFA680E1BBB0C21009BD1BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

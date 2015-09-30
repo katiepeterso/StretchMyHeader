@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "D5AB4A4DA8E83279DFB4A589851057F28B217C10",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "DC22E5519872F76C77D53A43655886FBD8E7A803" : 0,
+    "D5AB4A4DA8E83279DFB4A589851057F28B217C10" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "19CD5435-6F7A-468E-A932-A341B83ED4D6",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "DC22E5519872F76C77D53A43655886FBD8E7A803" : "",
+    "D5AB4A4DA8E83279DFB4A589851057F28B217C10" : "StretchMyHeader\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "StretchMyHeader",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "StretchMyHeader.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/katiepeterso\/StretchMyHeader.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D5AB4A4DA8E83279DFB4A589851057F28B217C10"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/katiepeterso\/lighthouse.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DC22E5519872F76C77D53A43655886FBD8E7A803"
+    }
+  ]
+}

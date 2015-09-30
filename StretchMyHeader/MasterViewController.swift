@@ -121,19 +121,35 @@ class MasterViewController: UITableViewController {
     }
     
     func updateHeaderView () {
-        tableView.contentInset = UIEdgeInsetsMake(kTableHeaderHeight, 0, 0, 0)
-        let headerOriginFrame = CGRectMake(0, -kTableHeaderHeight, tableView.bounds.size.width, headerView.frame.size.height)
+        tableView.contentInset = UIEdgeInsetsMake(kTableHeaderHeight-30, 0, 0, 0)
+        let headerOriginFrame = CGRectMake(0, 30-kTableHeaderHeight, tableView.bounds.size.width, headerView.frame.size.height)
         headerView.frame = headerOriginFrame
         
-        if tableView.contentOffset.y < -kTableHeaderHeight {
-            let frame = CGRectMake(headerView.frame.origin.x, tableView.contentOffset.y, headerView.frame.size.width, -tableView.contentOffset.y)
+        if tableView.contentOffset.y < 30-kTableHeaderHeight {
+            let frame = CGRectMake(headerView.frame.origin.x, tableView.contentOffset.y, headerView.frame.size.width, -tableView.contentOffset.y+30)
             headerView.frame = frame
         }
         
+        addDiagonalMaskToImage()
     }
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         self.updateHeaderView()
     }
+    
+    func addDiagonalMaskToImage () {
+        let maskLayer = CAShapeLayer ()
+        let trianglePath = UIBezierPath ()
+        trianglePath.moveToPoint(CGPointMake(headerView.frame.origin.x, headerView.frame.origin.y))
+        trianglePath.addLineToPoint(CGPointMake(headerView.frame.size.width, headerView.frame.origin.y))
+        trianglePath.addLineToPoint(CGPointMake(headerView.frame.size.width, headerView.frame.size.height))
+        trianglePath.addLineToPoint(CGPointMake(headerView.frame.origin.x, headerView.frame.size.height - 30))
+        trianglePath.closePath()
+        maskLayer.fillColor = UIColor.whiteColor().CGColor
+        maskLayer.backgroundColor = UIColor.clearColor().CGColor
+        maskLayer.path = trianglePath.CGPath
+        headerView.layer.mask = maskLayer
+    }
+    
 }
 
