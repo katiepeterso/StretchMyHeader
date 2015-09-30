@@ -86,7 +86,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="600" height="315"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-header" translatesAutoresizingMaskIntoConstraints="NO" id="oDB-5b-9BA">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-header" translatesAutoresizingMaskIntoConstraints="NO" id="oDB-5b-9BA">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="315"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgT-Jv-yoe">
@@ -158,6 +158,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="dateLabel" destination="dgT-Jv-yoe" id="aTa-kh-gKo"/>
+                        <outlet property="headerView" destination="llN-is-F6S" id="FMi-e9-4dg"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>

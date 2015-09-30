@@ -13,8 +13,9 @@ class MasterViewController: UITableViewController {
     var detailViewController: DetailViewController? = nil
     var objects = [AnyObject]()
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var headerView: UIView!
     
-    let dayTimePeriodFormatter = NSDateFormatter()
+    var kTableHeaderHeight = CGFloat()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,12 @@ class MasterViewController: UITableViewController {
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
         
+        tableView.tableHeaderView = nil
+        tableView.addSubview(headerView)
+         kTableHeaderHeight = headerView.frame.size.height
+        self.updateHeaderView()
+        
+        let dayTimePeriodFormatter = NSDateFormatter()
         dayTimePeriodFormatter.dateFormat = "MMMM d"
         let date = NSDate()
         let dateString = dayTimePeriodFormatter.stringFromDate(date)
@@ -95,6 +102,7 @@ class MasterViewController: UITableViewController {
 
         let object = objects[indexPath.row] as! NewsItem
         cell.setCellContents(object)
+        self.updateHeaderView()
         return cell
     }
 
@@ -110,6 +118,22 @@ class MasterViewController: UITableViewController {
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
+    }
+    
+    func updateHeaderView () {
+        tableView.contentInset = UIEdgeInsetsMake(kTableHeaderHeight, 0, 0, 0)
+        let headerOriginFrame = CGRectMake(0, -kTableHeaderHeight, tableView.bounds.size.width, headerView.frame.size.height)
+        headerView.frame = headerOriginFrame
+        
+        if tableView.contentOffset.y < -kTableHeaderHeight {
+            let frame = CGRectMake(headerView.frame.origin.x, tableView.contentOffset.y, headerView.frame.size.width, -tableView.contentOffset.y)
+            headerView.frame = frame
+        }
+        
+    }
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        self.updateHeaderView()
     }
 }
 
